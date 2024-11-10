@@ -1,0 +1,89 @@
+Language successfully loaded!
+* To view definition about this mode check !hm79coop
+Your buddy left you.
+left the server, request canceled.
+Wait for someone to enter
+to form a partnership.
+To form a partnership, type
+<part of player name>
+Request to
+Resquested by
+Time to expire
+Type !yes or !no to answer.
+To follow a partnership, type
+Time
+to change colors
+Buddy
+Type
+to
+change colors
+leave your buddy
+You requested
+to be your buddy!
+requested you to be his buddy!
+Type !yes to accept or !no to to refuse
+already has a pending request!
+already got a buddy!
+You already has a pending request of
+You already got a buddy!
+The request of
+expired!
+You refused the request of
+Your request to
+refused your request!
+You are now the buddy of
+You finished your partnership with
+finished the partnership with you
+You do not have a buddy!
+You changed colors with your buddy!
+Request to change colors expired!
+Welcome to M79 Coop Climb!
+In this gamemod, your objective is to reach
+the flags, with the help of your buddy.
+One must help the other, cooperating.
+Never leave your buddy far behind!
+The red buddy can pass through red polys and
+the blue buddy can pass through blue polys.
+Use your brain to solve the puzzles in each map!
+If there is no available buddy to coop with you,
+wait for someone to enter the server.
+To get the full list of commands, type
+End of help
+List of M79 Coop commands
+Request a player to a parternship
+Answer the command above
+Request change of colors with your buddy
+Leave your buddy
+<number of records> - shows list of records
+Show or hide info
+Follow a partnership (spec only)
+End of commands list
+* Type !coop for necessary commands
+You don't have a pending request!
+You must type the name (or part of it) of another player!
+You must type a player name!
+is not playing!
+Do you wish to change colors with your buddy?
+Type !switch to accept!
+TOP5 of map
+There are no stats for this map.
+Both buddies must capture the flags!
+Placing
+Were the winners, with
+seconds!
+It is FORBIDDEN to drop the M79 (type F)!
+### PLEASE LEAVE THESE TWO LINES ###
+### THE WAY THEY ARE! ###
+[Sandbox] M79 coop script has been enabled.
+Private chat (Y) sends messages directly to your buddy
+You dropped the flag!
+Your buddy dropped the flag!
+List of partnerships:
+Displays a list of all partnerships
+No partnership has been formed!
+<mapname> - shows TOP5 on map
+Your partner died!
+Your partner died, start over to help him.
+to retrieve the M79s
+You will retrieve M79s in 10 seconds...
+Kills yourself.
