@@ -1,8 +1,8 @@
 # OpenSoldat Scripting
-Repository for storing [OpenSoldat](https://github.com/opensoldat/opensoldat) game server scripts. The reason for placing server scripts here is to make writing the scripts in different language more convenient later by using this repository. I am not the only author of the files, some of them are the property of their respective owners.
+Repository for storing [OpenSoldat](https://github.com/opensoldat/opensoldat) game server scripts for in-game servers. The reason for placing server scripts here is to make rewriting into a modern language more convenient later by using this repository. I am not the only author of the files, some of them are the property of their respective owners.
 
 ## Running
-Requires installing [OpenSoldat Server](https://wiki.soldat.pl/index.php/Server) to use them. After installing, upload the files you want to the `scripts` folder. Every script requires its own folder to work, which looks like this:
+To use these in OpenSoldat, it requires installing OpenSoldat [server](https://wiki.soldat.pl/index.php/Server) to use them. After installing, upload the files you want to the `scripts` folder. Every script requires its own folder to work, which looks like this:
 
     objects
     scenery-gfx
