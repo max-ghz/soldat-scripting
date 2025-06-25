@@ -14,4 +14,4 @@ To use these in Soldat, it requires installing Soldat [server](https://wiki.sold
         ├── example2.pas
         └── config.ini
 
-To use files that have a database you will need an external library [libdb](https://github.com/XvayS/libdb) created for OpenSoldat dedicated servers.
+To use files that have a database you will need an external library [libdb](https://github.com/XvayS/libdb) created for Soldat dedicated servers.
