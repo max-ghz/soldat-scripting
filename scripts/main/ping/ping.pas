@@ -9,7 +9,6 @@ const
  trackping, maxping: Array [1..20] of integer;
    i, go4secondround: byte;
 
-
 function GetTarget(Str: string): byte;
 var
   Int: integer;
@@ -38,7 +37,6 @@ begin
       Result := 0;
   end;
 end;
-
 
 procedure OnPlayerSpeak(Id: byte; Text: string);
 var
@@ -109,10 +107,8 @@ WriteConsole(0,GetPlayerStat(Target,'name')+' is a spectator.',$FF0000)
 		WriteConsole(0, 'Tracking '+GetPlayerStat(Target, 'Name') + '''s ping, wait for result...', COLOR);
 		track[target] := trackcount;
 		end else WriteConsole(0, 'Already tracking '+GetPlayerStat(Target, 'Name') + '''s ping, wait.', COLOR);
-
  end;
 end;
-
 
 procedure AppOnIdle(Ticks: integer);
 var
@@ -159,7 +155,6 @@ begin
 			end;
 		end;
 end;
-
 
 procedure OnLeaveGame(ID, Team: byte; Kicked: boolean);
 begin
