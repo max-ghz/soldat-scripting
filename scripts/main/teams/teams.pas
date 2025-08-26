@@ -6,7 +6,6 @@ begin
   if (LowerCase(Text) = '!join') and (GetPlayerStat(ID,'Team') = 5) then Command('/setteam1 ' + IntToStr(ID));
 end;
 
-
 function OnPlayerCommand(ID: Byte; Text: string): boolean;
 begin
   if (LowerCase(Text) = '/red') or (LowerCase(Text) = '/alpha') then Command('/setteam1 ' + IntToStr(ID));
