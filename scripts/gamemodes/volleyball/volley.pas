@@ -60,7 +60,6 @@ begin
 	if debug then WriteLn(FormatDate('ss:zzz')+' - '+text);
 end;
 
-
 procedure WriteConsoleTeam( team: byte; message: String; color: longint );
 var	a: byte;
 begin
@@ -69,7 +68,6 @@ begin
 			if GetPlayerStat( a, 'Team' ) = team then
 				WriteConsole( a, message, color );
 end;
-
 
 procedure LoadMap();
 var i,s,t:byte;
@@ -90,9 +88,7 @@ begin
 		end;
 	end;
 	//playing:=0;
-	
 end;
-
 
 procedure KillBall();
 var i:integer;
@@ -100,14 +96,13 @@ begin
 	for i:=1 to 127 do begin
 		if GetObjectStat(i,'Active')=true then begin
 			if GetObjectStat(i,'Style')=KNIFE then begin
-//				WriteConsole(0,inttostr(i)+': '+inttostr(GetObjectstat(i,'style'))+' '+ inttostr(round(GetObjectStat(i,'X'))),$FFFFFFFF);
+                // WriteConsole(0,inttostr(i)+': '+inttostr(GetObjectstat(i,'style'))+' '+ inttostr(round(GetObjectStat(i,'X'))),$FFFFFFFF);
 				WriteDebug('KILL BALL!');
 				KillObject(i);
 			end;
 		end		
 	end;
 end;
-
 
 function KillFreeBalls(allballs:boolean):boolean;
 var 
@@ -116,7 +111,7 @@ var
 begin
 	found:=allballs;
 	result:=false;
-	//if (playing=3) then begin
+	// if (playing=3) then begin
 		for i:=1 to 127 do begin
 			if GetObjectStat(i,'Active')=true then begin
 				if GetObjectStat(i,'Style')=KNIFE then begin
@@ -125,16 +120,15 @@ begin
 				end;
 			end;
 		end;
-	//end;
+	// end;
 	result:=found;
 end;
-
 
 procedure KillAllBalls();
 var i:byte;
 begin
 	KillFreeBalls(true);
-	//KillBall();
+	// KillBall();
 	WriteDebug('KILL PLAYER BALLS!');
 	for i:=1 to MAXPLAYER do 
 		if Getplayerstat(i,'Active')=true then 
@@ -156,10 +150,9 @@ begin
 
 end;
 
-
 procedure PutBall(team:byte);
 begin
-	//KillObject(ball);
+	// KillObject(ball);
 	lastth:=0;
 	KillAllBalls();
 	sleep(100);
@@ -173,10 +166,9 @@ begin
 	lastteam:=team;
 	servetime:=0;
 	te[team].pass:=1;te[3-team].pass:=0;
-	//SpawnObject(te[team].spx,te[team].spy,12);
-	//sayToPlayer(1,inttostr(ball));
+	// SpawnObject(te[team].spx,te[team].spy,12);
+	// sayToPlayer(1,inttostr(ball));
 end;
-
 
 function CheckWhosPlayer(exc:byte):byte;
 var i:byte;
@@ -187,7 +179,6 @@ begin
 			if GetPlayerStat(i,'Alive')=true then 
 				if GetPlayerStat(i,'Primary')=14 then result:=i;
 end;
-
 	
 procedure CheckTeams(exc:byte);
 var i,t:byte;
@@ -213,9 +204,7 @@ begin
 		SetTeamScore(1,0);
 		SetTeamScore(2,0);
 	end;
-
 end;
-
 
 procedure ActivateServer();
 begin
@@ -230,20 +219,17 @@ begin
 	CheckTeams(0);
 end;
 
-
 function Color(team:byte):longint;
 begin
 	if team=1 then result:=RED
 	else result:=BLUE;
 end;
 
-
 function dtx(team:byte):integer;
 begin
 	if team=1 then result:=DTXRED
 	else result:=DTXBLUE;
 end;
-
 
 procedure Ball(ID:byte);
 begin
@@ -312,14 +298,12 @@ begin
 	Ball(ID);
 end;
 
-
 procedure ClearPlayer(ID:byte);
 begin
 	if lastpl=ID then lastpl:=0;
 	pl[ID].balltime:=0;
 	if id>0 then ForceWeapon(id,255,255,0);
 end;
-
 
 procedure Point(team:byte);
 begin
@@ -332,7 +316,6 @@ begin
 	PutBall(team);
 end;
 
-
 procedure BOut(team:byte);
 begin
 	DrawText(0,' - OUT -',DTTIME,color(team),DTSIZE,DTXMID,DTY);
@@ -341,7 +324,6 @@ begin
 	Point(3-team);
 end;
 
-
 procedure Score(team:byte);
 begin
 	DrawText(0,'-SCORE-',DTTIME,color(team),DTSIZE,DTXMID,DTY);
@@ -349,7 +331,6 @@ begin
 	mustkillball:=false;
 	Point(team);
 end;
-
 
 procedure Foul(id:byte);
 var team:byte;
@@ -365,14 +346,12 @@ begin
 end;
 procedure FoulT(team:byte);
 
-
 begin
 	DrawText(0,'- FOUL -',DTTIME,color(team),DTSIZE,DTXMID,DTY);
 	WriteDebug(inttostr(team)+': FOUL!');
 	mustkillball:=false;
 	Point(3-team);
 end;
-
 
 procedure OnPlayerRespawn(ID: byte);
 begin
@@ -381,7 +360,6 @@ begin
 	pl[id].mustdie:=false;
 	pl[id].balltime:=0;
 end;
-
 
 procedure CheckBall();
 var i:integer;
@@ -392,7 +370,7 @@ begin
 			if GetObjectStat(i,'Active')=true then begin
 				if GetObjectStat(i,'Style')=KNIFE then begin
 				
-					//if debug then WriteConsole(0,'LOST! '+inttostr(i)+': '+inttostr(GetObjectstat(i,'style'))+' '+ inttostr(round(GetObjectStat(i,'X'))),$FFFFFFFF);
+					// if debug then WriteConsole(0,'LOST! '+inttostr(i)+': '+inttostr(GetObjectstat(i,'style'))+' '+ inttostr(round(GetObjectStat(i,'X'))),$FFFFFFFF);
 					x:=GetObjectStat(i,'X');
 					y:=GetObjectStat(i,'Y');
 					if (x<te[1].edgex) or (x>te[2].edgex) then BOut(lastteam)
@@ -402,13 +380,12 @@ begin
 						if x<0 then warn(2) else warn(1);
 					break;
 				end;
-				//KillObject(i);
+				// KillObject(i);
 			end;
 		end		
 		
 	end;
 end;
-
 
 function OnCommand(ID: Byte; Text: string): boolean;
 begin
@@ -430,12 +407,10 @@ begin
 	end;
 end;
 
-
 procedure OnMapChange(NewMap: string);
 begin
 	LoadMap();
 end;
-
 
 procedure OnJoinTeam(ID, Team: byte);
 begin
@@ -445,18 +420,15 @@ begin
 
 end;
 
-
 procedure OnLeaveGame(ID, Team: byte; Kicked: boolean);
 begin
 	CheckTeams(ID);
 end;
 
-
 function GetMS():longint;
 begin
 	result:=strtoint(FormatDate('s'))*1000+strtoint(FormatDate('z'));
 end;
-
 
 procedure OnWeaponChange(ID, PrimaryNum, SecondaryNum: byte);
 var x,y,vx:single;
@@ -473,7 +445,7 @@ begin
 		Foul(ID);
 		exit;
 	end;
-//	if 
+ 
 	if (primarynum=255) and (secondarynum=255) then begin
 		pl[ID].balltime:=0;
 		if ID=lastpl then begin
@@ -490,7 +462,7 @@ begin
 				end else if ((c='>') and (pl[id].team=2)) or ((c='<') and (pl[id].team=1)) then Pass(pl[id].team)
 				else DSet(pl[id].team);
 			end;
-			pl[id].throwtime:=GetTickCount();//GetMS();
+			pl[id].throwtime:=GetTickCount(); // GetMS();
 			lastth:=ID;
 		end;
 		exit;
@@ -498,7 +470,7 @@ begin
 	if (primarynum=14) and (secondarynum=255) then begin
 		WriteDebug(inttostr(pl[id].team)+': NEW KNIFER!');	
 		if CheckWhosPlayer(ID)=0 then begin
-//SERVE
+// SERVE
 			if playing=3 then begin
 				SetPlayer(ID);
 				te[pl[id].team].pass:=2;//5;
@@ -507,7 +479,7 @@ begin
 				servetime:=0;
 				Serve(pl[id].team);
 			end else begin
-//PLAY
+// PLAY
 				x:=GetPlayerStat(id,'x');
 				y:=GetPlayerStat(id,'y');
 				if x<0 then x:=-x;
@@ -562,8 +534,8 @@ begin
 			WriteDebug(inttostr(pl[id].team)+': CLEARED KNIFE BUG!');
 			exit;
 		end;
-		//pl[ID].balltime:=MAXTIME;
-		//WriteDebug('normal onweap end');
+		// pl[ID].balltime:=MAXTIME;
+		// WriteDebug('normal onweap end');
 	end else begin
 		ForceWeapon(ID,255,255,0);
 		if id=lastpl then begin
@@ -574,15 +546,13 @@ begin
 	end;
 end;
 
-
 function OnPlayerDamage(Victim, Shooter: byte; Damage: integer): integer;
 var x,y,dx,dy:single;
 begin
-	//WriteLn(inttostr(damage));
+	// WriteLn(inttostr(damage));
 	result:=damage;
 	if pl[victim].mustdie then exit;
 	if playing=0 then exit;
-		
 
 	if (damage < 0) then 
 	begin 
@@ -605,14 +575,12 @@ begin
     end else result:=0; 
 end;
 
-
 function OnPlayerCommand(ID: Byte; Text: string): boolean;
 begin
    if Text = '/kill' then Command('/kick ' + InttoStr(ID));
    if Text = '/mercy' then Command('/kick ' + InttoStr(ID));
    if Text = '/brutalkill' then Command('/kick ' + InttoStr(ID));
 end;
-
 
 procedure Apponidle(ticks:integer);
 var i:byte;
@@ -631,7 +599,6 @@ begin
 }	
 	//if debug then WriteConsole(0,'status: '+inttostr(playing),$FFFFFFFF);
 	//KillNonPlayerBall();
-
 
 	if (playing=2) and (lastpl>0) then begin
 		WriteDebug('playing2 check '+inttostr(lastpl)+inttostr(lastteam));
@@ -653,9 +620,7 @@ begin
 		end;
 	end;
 
-
 	CheckBall();
-
 	if Ticks mod 60 <> 0 then exit;
 	
 	if scorewait>0 then begin
