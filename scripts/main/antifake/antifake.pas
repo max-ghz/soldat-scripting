@@ -10,11 +10,10 @@ type
 		Count:		array[0..cCHECKNICKS-1] of integer;
 		RealHigh:	integer;
 	end;
-
+ 
 var
 	list:	array of string;
 	Player:	array[1..32] of Human;
-
 
 function FindID(Src: string) : integer; // -1 if match not found or player is not ingame.
 var i: byte; found: boolean; s: string; 
@@ -52,12 +51,10 @@ else
 	
 end;
 
-
 function GetOctets(IP:string) : string; begin
 	// it returns first 2 octets of source IP
 	Result := Copy(IP,1,StrPos('.',IP)) + GetPiece(IP,'.',1) + '.';
 end;
-
 
 function GetSpace(MaxLen: integer; Src: string): string; var i,srclen: integer; tempstr: string; begin
 	srclen := Length(Src);
@@ -65,7 +62,6 @@ function GetSpace(MaxLen: integer; Src: string): string; var i,srclen: integer; 
 		tempstr := tempstr + ' ';
 	Result := tempstr;
 end;
-
 
 function Explode(Source: string; const Delimiter: string): array of string;
 var
@@ -83,7 +79,6 @@ begin
   SetArrayLength(Result, ResLength - 1);
 end;
 
-
 procedure SortArray(ID: byte); var i,j,max: integer; tempint: integer; tempstr: string; begin	
 	for i:=0 to Player[ID].RealHigh-1 do
 		for j:=Player[ID].RealHigh downto i+1 do
@@ -97,7 +92,6 @@ procedure SortArray(ID: byte); var i,j,max: integer; tempint: integer; tempstr: 
 				Player[ID].Names[j] := tempstr;
 			end;
 end;
-
 
 procedure ResetVars(ID: byte); var i: integer; begin
 	Player[ID].RealName := '';
@@ -159,7 +153,6 @@ begin
 	WriteFile(filename,ReadFile(filename)+chr(4)+IdToName(ID)+chr(3)+'1'+chr(10))
 end;
 
-
 procedure UnCover(ID: byte); 
 var 
 	needle: string; 
@@ -191,7 +184,6 @@ begin
 	end;
 end;
 
-
 // default events
 procedure OnJoinGame(ID, Team: byte);
 begin
@@ -206,12 +198,10 @@ begin
 	end;
 end;
 
-
 procedure OnLeaveGame(ID, Team: byte; Kicked: boolean);
 begin
 	ResetVars(ID);
 end;
-
 
 function OnPlayerCommand(ID: Byte; Text: string): boolean; var found: integer;
 begin
@@ -226,10 +216,9 @@ begin
 		else WriteConsole(ID,IDtoName(found) + '  is  ' + Player[found].RealName,cCOLOR);
 	end;
 
-	//NOTE: This function will be called when [_ANY_] player types a / command.
-	Result := false; //Return true if you want disable the command typed.
+	// NOTE: This function will be called when [_ANY_] player types a / command.
+	Result := false; // return true if you want disable the command typed.
 end;
-
 
 procedure ActivateServer(); var i: integer;
 begin
