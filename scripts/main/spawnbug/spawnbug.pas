@@ -9,7 +9,6 @@ i, amount1, amount2, j, k: byte;
 alphaspawnstyle, bravospawnstyle : array [0..255] of integer;
 lowestdistance: Array [1..32] of single;
 
-
 procedure OnJoinGame(ID, Team: byte);
 begin
 	kill[id] := true;
@@ -20,7 +19,6 @@ begin
 			WriteLn('Possible spawnbug detected, player '+IDToName(ID)+' killed.');
 	end;
 end;
-
 
 procedure AppOnIdle(Ticks: integer);
 begin
@@ -62,7 +60,6 @@ if letskill then begin
 	letskill := false;
 end;
 end;
-
 
 procedure OnMapChange(NewMap: string);
 var
