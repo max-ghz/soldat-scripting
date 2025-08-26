@@ -16,7 +16,6 @@ begin
 	end;
 end;
 
-
 function OnPlayerCommand(ID: Byte; Text: string): boolean;
 var
 Name: string;
